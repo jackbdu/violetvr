@@ -8,13 +8,23 @@
   </head>
   <body>
     <a-scene>
-        <a-camera position="0 1.8 4" wasd-controls-enabled="false" cursor-visible="false"></a-camera>
+        <a-camera position="0 1.8 4" wasd-controls-enabled="false" cursor-opacity="0.6"></a-camera>
+
+        <a-cylinder position="0 -5 4" onclick="test();"
+            radius="1" height="2.5" open-ended="false"
+            color="#93648D" roughness="0.5" metalness="0.5">
+            <a-mouseenter color="#C394BD"></a-mouseenter>
+            <a-mouseleave color="#93648D"></a-mouseleave>
+        </a-cylinder>
 
         <a-sky src="../data/clark/001.jpg" rotation="0 -130 0"></a-sky>
-
-        <a-entity position="0 -5 4" rotation="0 0 0"
-        geometry="primitive: cylinder; radius: 1; height: 2.5; openEnded: false;"
-        material="color: #93648D; roughness: 0.5; metalness: 0.5;"></a-entity>
     </a-scene>
+
+    <script>
+        var num = 1;
+        function test() {
+            document.getElementsByTagName("a-sky")[0].setAttribute("src","../data/clark/00"+(num+1)+".jpg");
+        }
+    </script>
   </body>
 </html>
