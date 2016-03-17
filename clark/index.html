@@ -5,6 +5,9 @@
     <title>Summit Room</title>
     <meta name="nyu-vr" content="Summit Room">
     <script src="../js/aframe.min.js"></script>
+    <style>
+       img.preload { display: none; }
+    </style>
   </head>
   <body>
     <a-scene>
@@ -26,5 +29,6 @@
             document.getElementsByTagName("a-sky")[0].setAttribute("src","../data/clark/00"+(num+1)+".jpg");
         }
     </script>
+    <img src="../data/clark/002.jpg" class="preload"></img>
   </body>
 </html>
