@@ -19,16 +19,51 @@
         </a-cylinder>
 
         <a-sky src="../data/clark/001.jpg" rotation="0 0 0"></a-sky>
-        <a-image onclick="test()" scale="3 3 3" position="0 0 -10" src="../data/arrow.png" opacity="0.3" rotation="-90 0 0">
+        <a-image id="front" onclick="walk('front');" scale="3 3 3" position="0 0 -10" src="../data/arrow.png" opacity="0.3" rotation="-90 0 0">
+            <a-mouseenter opacity="0.7"></a-mouseenter>
+            <a-mouseleave opacity="0.3"></a-mouseleave>
+        </a-image>
+        <a-image id="back" onclick="walk('back');" scale="3 3 3" position="0 0 10" src="../data/arrow.png" opacity="0.3" rotation="90 0 0">
             <a-mouseenter opacity="0.7"></a-mouseenter>
             <a-mouseleave opacity="0.3"></a-mouseleave>
         </a-image>
     </a-scene>
 
     <script>
-        var num = 1;
-        function test() {
-            document.getElementsByTagName("a-sky")[0].setAttribute("src","../data/clark/00"+(num+1)+".jpg");
+        var map;
+        var current = "001";
+
+        function loadJSON() {
+
+            xobj = new XMLHttpRequest();
+            xobj.overrideMimeType("application/json");
+            xobj.open('GET', '../data/clark/map.json', true);
+            xobj.onreadystatechange = function() {
+                if (xobj.readyState == 4 && xobj.status == "200") {
+
+                    // .open will NOT return a value but simply returns undefined in async mode so use a callback
+                    map = JSON.parse(xobj.responseText);
+                    walk("init");
+                }
+            }
+            xobj.send(null);
+        }
+
+        // Call to function with anonymous callback
+        loadJSON();
+
+        function walk(direction) {
+            if (direction != "init") {
+                current = map[current][direction];
+                document.getElementsByTagName("a-sky")[0].setAttribute("src","../data/clark/"+current+".jpg");
+            }
+            for (arrow in map[current]) {
+                if (map[current][arrow] == "null") {
+                    document.getElementById(arrow).setAttribute("scale","0 0 0");
+                } else {
+                    document.getElementById(arrow).setAttribute("scale","3 3 3");
+                }
+            }
         }
 
     </script>
