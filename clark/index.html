@@ -11,16 +11,18 @@
   </head>
   <body>
     <a-scene>
-        <a-camera position="0 1.8 4" wasd-controls-enabled="false" cursor-opacity="0.6"></a-camera>
+        <a-camera position="0 7 0" wasd-controls-enabled="false" cursor-opacity="0.6"></a-camera>
 
-        <a-cylinder position="0 -5 4" onclick="test();"
+        <a-cylinder position="0 0 0" onclick="test();"
             radius="1" height="2.5" open-ended="false"
             color="#93648D" roughness="0.5" metalness="0.5">
-            <a-mouseenter color="#C394BD"></a-mouseenter>
-            <a-mouseleave color="#93648D"></a-mouseleave>
         </a-cylinder>
 
-        <a-sky src="../data/clark/001.jpg" rotation="0 -130 0"></a-sky>
+        <a-sky src="../data/clark/001.jpg" rotation="0 -14 0"></a-sky>
+        <a-image onclick="test()" scale="3 3 3" position="0 0 -15" src="../data/arrow.png" opacity="0.3" rotation="-90 0 0">
+            <a-mouseenter opacity="0.7"></a-mouseenter>
+            <a-mouseleave opacity="0.3"></a-mouseleave>
+        </a-image>
     </a-scene>
 
     <script>
