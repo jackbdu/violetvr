@@ -63,10 +63,14 @@
                 document.getElementsByTagName("a-sky")[0].setAttribute("src","../data/clark/"+current+".jpg");
             }
             for (arrow in map[current]) {
-                if (map[current][arrow] == "null") {
-                    document.getElementById(arrow).setAttribute("scale","0 0 0");
+                if (arrow != "rotate") {
+                    if (map[current][arrow] == "null") {
+                        document.getElementById(arrow).setAttribute("scale","0 0 0");
+                    } else {
+                        document.getElementById(arrow).setAttribute("scale","3 3 3");
+                    }
                 } else {
-                    document.getElementById(arrow).setAttribute("scale","3 3 3");
+                    document.getElementsByTagName("a-sky")[0].setAttribute("rotation", "0 "+map[current][arrow]+" 0");
                 }
             }
         }
