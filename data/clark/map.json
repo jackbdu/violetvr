@@ -61,7 +61,7 @@
 "rotate": "0"
 },
 "479051321.268617":{
-"front":"null",
+"front":"479051507.689572",
 "right":"null",
 "back":"479051191.535574",
 "left":"479051454.311288",
@@ -78,6 +78,118 @@
 "front":"null",
 "right":"null",
 "back":"479051454.311288",
+"left":"null",
+"rotate": "0"
+},
+"479051507.689572":{
+"front":"null",
+"right":"null",
+"back":"479051321.268617",
+"left":"479051553.401475",
+"rotate": "-90"
+},
+"479051553.401475":{
+"front":"479052265.379253",
+"right":"479051507.689572",
+"back":"null",
+"left":"479051601.769144",
+"rotate": "0"
+},
+"479051601.769144":{
+"front":"479052151.846866",
+"right":"479051553.401475",
+"back":"479051657.911083",
+"left":"479052100.836295",
+"rotate": "0"
+},
+"479051657.911083":{
+"front":"479051601.769144",
+"right":"479052041.434693",
+"back":"null",
+"left":"479051916.597958",
+"rotate": "90"
+},
+"479051916.597958":{
+"front":"null",
+"right":"479051657.911083",
+"back":"null",
+"left":"null",
+"rotate": "0"
+},
+"479052041.434693":{
+"front":"null",
+"right":"null",
+"back":"null",
+"left":"479051657.911083",
+"rotate": "180"
+},
+"479052100.836295":{
+"front":"null",
+"right":"479051601.769144",
+"back":"null",
+"left":"null",
+"rotate": "0"
+},
+"479052151.846866":{
+"front":"479052206.289059",
+"right":"null",
+"back":"479051601.769144",
+"left":"null",
+"rotate": "-90"
+},
+"479052206.289059":{
+"front":"null",
+"right":"null",
+"back":"479051601.769144",
+"left":"null",
+"rotate": "-90"
+},
+"479052265.379253":{
+"front":"null",
+"right":"null",
+"back":"479051553.401475",
+"left":"null",
+"rotate": "-90"
+},
+"":{
+"front":"null",
+"right":"null",
+"back":"",
+"left":"null",
+"rotate": "0"
+},
+"":{
+"front":"null",
+"right":"null",
+"back":"",
+"left":"null",
+"rotate": "0"
+},
+"":{
+"front":"null",
+"right":"null",
+"back":"",
+"left":"null",
+"rotate": "0"
+},
+"":{
+"front":"null",
+"right":"null",
+"back":"",
+"left":"null",
+"rotate": "0"
+},
+"":{
+"front":"null",
+"right":"null",
+"back":"",
+"left":"null",
+"rotate": "0"
+},
+"":{
+"front":"null",
+"right":"null",
+"back":"",
 "left":"null",
 "rotate": "0"
 }
