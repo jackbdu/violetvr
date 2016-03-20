@@ -8,7 +8,7 @@
   </head>
   <body>
     <a-scene>
-        <a-camera position="0 7 0" wasd-controls-enabled="false" cursor-opacity="0.6"></a-camera>
+        <a-camera position="0 7 0" rotation="0 0 0" wasd-controls-enabled="false" cursor-opacity="0.6"></a-camera>
 
         <a-cylinder position="0 0 0" onclick="test();"
             radius="1" height="2.5" open-ended="false"
@@ -36,8 +36,9 @@
 
     <script>
         var map;
-        var current = "479050310.432638";
+        var current;
 
+        
         function loadJSON() {
 
             xobj = new XMLHttpRequest();
@@ -58,10 +59,20 @@
         loadJSON();
 
         function walk(direction) {
+            var info = window.location.search.substring(1).split("&");
             if (direction != "init") {
                 current = map[current][direction];
-                document.getElementsByTagName("a-sky")[0].setAttribute("src","../data/clark/"+current+".jpg");
+            } else {
+                if (info[0]) {
+                    current = info[0];
+                } else {
+                    current = "479050310.432638";
+                }
+                if (info[1]){
+                    document.getElementsByTagName("a-camera")[0].setAttribute("rotation","0 "+info[1]+" 0");
+                }
             }
+            document.getElementsByTagName("a-sky")[0].setAttribute("src","../data/clark/"+current+".jpg");
             for (arrow in map[current]) {
                 if (arrow != "rotate") {
                     if (map[current][arrow] == "null") {
