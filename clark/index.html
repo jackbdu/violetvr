@@ -8,7 +8,7 @@
   </head>
   <body>
     <a-scene>
-        <a-camera position="0 7 0" rotation="0 0 0" wasd-controls-enabled="false" cursor-opacity="0.6"></a-camera>
+        <a-camera position="0 7 0" rotation="0 0 0" wasd-controls-enabled="false" cursor-visible="false" cursor-opacity="0.6"></a-camera>
 
         <a-cylinder position="0 0 0" onclick="test();"
             radius="1" height="2.5" open-ended="false"
@@ -16,6 +16,35 @@
         </a-cylinder>
 
         <a-sky src="../data/clark/479050310.432638.jpg" rotation="0 0 0"></a-sky>
+        <a-cube id="arrow" scale="1 0.2 1" rotation="0 45 0" opacity="0">
+            <a-animation id="arrowanimation" attribute="position"
+                         from="0 0 -15"
+                         to="0 0 -20"
+                         dur="1000"
+                         easing="linear"
+                         repeat="indefinite"></a-animation>
+        </a-cube>
+        <a-cube id="front" onclick="walk('front');" scale="10 10 0" opacity="0" position="0 5 -10">
+            <a-mouseenter target="#arrow" opacity="0.6"></a-mouseenter>
+            <a-mouseenter target="#arrowanimation" from="0 0 -15" to="0 0 -20"></a-mouseenter>
+            <a-mouseleave target="#arrow" opacity="0"></a-mouseleave>
+        </a-cube>
+        <a-cube id="right" onclick="walk('right');" scale="10 10 0" opacity="0" position="10 5 0" rotation="0 90 0">
+            <a-mouseenter target="#arrow" opacity="0.6"></a-mouseenter>
+            <a-mouseenter target="#arrowanimation" from="15 0 0" to="20 0 0"></a-mouseenter>
+            <a-mouseleave target="#arrow" opacity="0"></a-mouseleave>
+        </a-cube>
+        <a-cube id="back" onclick="walk('back');" scale="10 10 0" opacity="0" position="0 5 10">
+            <a-mouseenter target="#arrow" opacity="0.6"></a-mouseenter>
+            <a-mouseenter target="#arrowanimation" from="0 0 15" to="0 0 20"></a-mouseenter>
+            <a-mouseleave target="#arrow" opacity="0"></a-mouseleave>
+        </a-cube>
+        <a-cube id="left" onclick="walk('left');" scale="10 10 0" opacity="0" position="-10 5 0" rotation="0 90 0">
+            <a-mouseenter target="#arrow" opacity="0.6"></a-mouseenter>
+            <a-mouseenter target="#arrowanimation" from="-15 0 0" to="-20 0 0"></a-mouseenter>
+            <a-mouseleave target="#arrow" opacity="0"></a-mouseleave>
+        </a-cube>
+        <!--
         <a-image id="front" onclick="walk('front');" scale="3 3 3" position="0 0 -10" src="../data/arrow.png" opacity="0.3" rotation="90 180 0">
             <a-mouseenter opacity="0.7"></a-mouseenter>
             <a-mouseleave opacity="0.3"></a-mouseleave>
@@ -32,6 +61,7 @@
             <a-mouseenter opacity="0.7"></a-mouseenter>
             <a-mouseleave opacity="0.3"></a-mouseleave>
         </a-image>
+        -->
     </a-scene>
 
     <script>
@@ -58,11 +88,34 @@
         // Call to function with anonymous callback
         loadJSON();
 
+        var mouseMoved = false;
+        var mousedown = false;
         function walk(direction) {
+            // handle drag without click
+            document.querySelector('html').addEventListener('mousedown', function () {
+                mousedown = true;
+            });
+            document.querySelector('html').addEventListener('mousemove', function () {
+                if (mousedown) {
+                    mouseMoved = true;
+                } else {
+                    mouseMoved = false;
+                }
+            });
+            document.querySelector('html').addEventListener('mouseup', function () {
+                window.setTimeout(function() {
+                    mousedown = false;
+                    mouseMoved = false;
+                });
+            });
+
             var info = window.location.search.substring(1).split("&");
             if (direction != "init") {
-                current = map[current][direction];
+                if (!mouseMoved) {
+                    current = map[current][direction];
+                }
             } else {
+
                 if (info[0]) {
                     current = info[0];
                 } else {
@@ -78,13 +131,14 @@
                     if (map[current][arrow] == "null") {
                         document.getElementById(arrow).setAttribute("scale","0 0 0");
                     } else {
-                        document.getElementById(arrow).setAttribute("scale","3 3 3");
+                        document.getElementById(arrow).setAttribute("scale","10 10 0");
                     }
                 } else {
                     document.getElementsByTagName("a-sky")[0].setAttribute("rotation", "0 "+map[current][arrow]+" 0");
                 }
             }
         }
+
 
     </script>
 
