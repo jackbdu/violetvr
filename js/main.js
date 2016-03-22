@@ -9,6 +9,16 @@ function loadJSON() {
 
             // .open will NOT return a value but simply returns undefined in async mode so use a callback
             map = JSON.parse(xobj.responseText);
+            for (imgName in map) {
+                var img = document.createElement("img");
+                var imgId = document.createAttribute("id");
+                var imgSrc = document.createAttribute("src");
+                imgId.value = imgName;
+                imgSrc.value = "../data/clark/"+imgName+".jpg";
+                img.setAttributeNode(imgId);
+                img.setAttributeNode(imgSrc);
+                document.getElementsByTagName("a-assets")[0].appendChild(img);
+            }
             walk("init");
         }
     }
