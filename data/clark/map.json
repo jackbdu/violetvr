@@ -248,12 +248,5 @@
 "back":"null",
 "left":"null",
 "rotate": "180"
-},
-"":{
-"front":"null",
-"right":"null",
-"back":"",
-"left":"null",
-"rotate": "0"
 }
 }

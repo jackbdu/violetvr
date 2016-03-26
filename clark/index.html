@@ -11,7 +11,11 @@
     <a-scene>
         <a-assets>
         </a-assets>
-        <a-camera position="0 7 0" rotation="0 -90 0" wasd-controls-enabled="false" cursor-visible="false" cursor-opacity="0.6"></a-camera>
+        <a-entity rotation="0 -90 0">
+            <a-camera position="0 7 0" wasd-controls-enabled="false">
+                <a-cursor opacity="0"></a-cursor>    
+            </a-camera>
+        </a-entity>
 
         <a-cylinder position="0 0 0" onclick="test();"
             radius="1" height="2.5" open-ended="false"
@@ -19,34 +23,34 @@
         </a-cylinder>
 
         <a-sky src="../data/clark/479050310.432638.jpg" rotation="0 0 0"></a-sky>
-        <a-cube id="arrow" scale="1 0.2 1" rotation="0 45 0" opacity="0">
+        <a-box id="arrow" scale="1 0.2 1" rotation="0 45 0" color="gray" opacity="0">
             <a-animation id="arrowanimation" attribute="position"
                          from="0 0 -15"
                          to="0 0 -20"
                          dur="1000"
                          easing="linear"
                          repeat="indefinite"></a-animation>
-        </a-cube>
-        <a-cube id="front" onclick="walk('front');" scale="10 10 0" opacity="0" position="0 5 -10">
-            <a-mouseenter target="#arrow" opacity="0.6"></a-mouseenter>
-            <a-mouseenter target="#arrowanimation" from="0 0 -15" to="0 0 -20"></a-mouseenter>
-            <a-mouseleave target="#arrow" opacity="0"></a-mouseleave>
-        </a-cube>
-        <a-cube id="right" onclick="walk('right');" scale="10 10 0" opacity="0" position="10 5 0" rotation="0 90 0">
-            <a-mouseenter target="#arrow" opacity="0.6"></a-mouseenter>
-            <a-mouseenter target="#arrowanimation" from="15 0 0" to="20 0 0"></a-mouseenter>
-            <a-mouseleave target="#arrow" opacity="0"></a-mouseleave>
-        </a-cube>
-        <a-cube id="back" onclick="walk('back');" scale="10 10 0" opacity="0" position="0 5 10">
-            <a-mouseenter target="#arrow" opacity="0.6"></a-mouseenter>
-            <a-mouseenter target="#arrowanimation" from="0 0 15" to="0 0 20"></a-mouseenter>
-            <a-mouseleave target="#arrow" opacity="0"></a-mouseleave>
-        </a-cube>
-        <a-cube id="left" onclick="walk('left');" scale="10 10 0" opacity="0" position="-10 5 0" rotation="0 90 0">
-            <a-mouseenter target="#arrow" opacity="0.6"></a-mouseenter>
-            <a-mouseenter target="#arrowanimation" from="-15 0 0" to="-20 0 0"></a-mouseenter>
-            <a-mouseleave target="#arrow" opacity="0"></a-mouseleave>
-        </a-cube>
+        </a-box>
+        <a-box id="front" onclick="walk('front');" scale="10 10 0" opacity="0" position="0 5 -10">
+            <a-event name="mouseenter" target="#arrow" opacity="0.6"></a-event>
+            <a-event name="mouseenter" target="#arrowanimation" from="0 0 -15" to="0 0 -20"></a-event>
+            <a-event name="mouseleave" target="#arrow" opacity="0"></a-event>
+        </a-box>
+        <a-box color="red" id="right" onclick="walk('right');" scale="10 10 0" opacity="0" position="10 5 0" rotation="0 90 0">
+            <a-event name="mouseenter" target="#arrow" opacity="0.6"></a-event>
+            <a-event name="mouseenter" target="#arrowanimation" from="15 0 0" to="20 0 0"></a-event>
+            <a-event name="mouseleave" target="#arrow" opacity="0"></a-event>
+        </a-box>
+        <a-box color="yellow" id="back" onclick="walk('back');" scale="10 10 0" opacity="0" position="0 5 10">
+            <a-event name="mouseenter" target="#arrow" opacity="0.6"></a-event>
+            <a-event name="mouseenter" target="#arrowanimation" from="0 0 15" to="0 0 20"></a-event>
+            <a-event name="mouseleave" target="#arrow" opacity="0"></a-event>
+        </a-box>
+        <a-box color="black" id="left" onclick="walk('left');" scale="10 10 0" opacity="0" position="-10 5 0" rotation="0 90 0">
+            <a-event name="mouseenter" target="#arrow" opacity="0.6"></a-event>
+            <a-event name="mouseenter" target="#arrowanimation" from="-15 0 0" to="-20 0 0"></a-event>
+            <a-event name="mouseleave" target="#arrow" opacity="0"></a-event>
+        </a-box>
     </a-scene>
 
     <!-- Google Analytics -->
