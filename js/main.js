@@ -65,7 +65,7 @@ function walk(direction, startImg) {
     document.getElementsByTagName("a-sky")[0].setAttribute("src","../data/"+folderName+"/"+current+".jpg");
     for (arrow in map[current]) {
         if (arrow != "rotate") {
-            if (map[current][arrow] == "null") {
+            if (map[current][arrow] == "null" || map[current][arrow] == "") {
                 document.getElementById(arrow).setAttribute("scale","0 0 0");
             } else {
                 document.getElementById(arrow).setAttribute("scale","10 10 0");

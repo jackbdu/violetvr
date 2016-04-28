@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Palladium Hall</title>
+    <meta name="nyu-vr" content="Palladium Hall">
+    <script src="../js/aframe.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        loadJSON("palladium", "481322438.975125");
+    </script>
+  </head>
+  <body>
+    <a-scene>
+        <a-assets>
+        </a-assets>
+        <a-entity rotation="0 0 0">
+            <a-camera position="0 7 0" wasd-controls-enabled="false">
+                <a-cursor opacity="0"></a-cursor>    
+            </a-camera>
+        </a-entity>
+
+        <a-cylinder position="0 0 0" onclick="test();"
+            radius="1" height="2.5" open-ended="false"
+            color="#93648D" roughness="0.5" metalness="0.5">
+        </a-cylinder>
+
+        <a-sky src="" rotation="0 0 0"></a-sky>
+        <a-box id="arrow" scale="1 0.2 1" rotation="0 45 0" color="gray" opacity="0">
+            <a-animation id="arrowanimation" attribute="position"
+                         from="0 0 -15"
+                         to="0 0 -20"
+                         dur="1000"
+                         easing="linear"
+                         repeat="indefinite"></a-animation>
+        </a-box>
+        <a-box id="front" onclick="walk('front');" scale="10 10 0" opacity="0" position="0 5 -10">
+            <a-event name="mouseenter" target="#arrow" opacity="0.6"></a-event>
+            <a-event name="mouseenter" target="#arrowanimation" from="0 0 -15" to="0 0 -20"></a-event>
+            <a-event name="mouseleave" target="#arrow" opacity="0"></a-event>
+        </a-box>
+        <a-box color="red" id="right" onclick="walk('right');" scale="10 10 0" opacity="0" position="10 5 0" rotation="0 90 0">
+            <a-event name="mouseenter" target="#arrow" opacity="0.6"></a-event>
+            <a-event name="mouseenter" target="#arrowanimation" from="15 0 0" to="20 0 0"></a-event>
+            <a-event name="mouseleave" target="#arrow" opacity="0"></a-event>
+        </a-box>
+        <a-box color="yellow" id="back" onclick="walk('back');" scale="10 10 0" opacity="0" position="0 5 10">
+            <a-event name="mouseenter" target="#arrow" opacity="0.6"></a-event>
+            <a-event name="mouseenter" target="#arrowanimation" from="0 0 15" to="0 0 20"></a-event>
+            <a-event name="mouseleave" target="#arrow" opacity="0"></a-event>
+        </a-box>
+        <a-box color="black" id="left" onclick="walk('left');" scale="10 10 0" opacity="0" position="-10 5 0" rotation="0 90 0">
+            <a-event name="mouseenter" target="#arrow" opacity="0.6"></a-event>
+            <a-event name="mouseenter" target="#arrowanimation" from="-15 0 0" to="-20 0 0"></a-event>
+            <a-event name="mouseleave" target="#arrow" opacity="0"></a-event>
+        </a-box>
+    </a-scene>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-59972581-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </body>
+</html>
