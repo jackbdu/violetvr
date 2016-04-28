@@ -2,10 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>55 Clark Street</title>
-    <meta name="nyu-vr" content="Clark Street">
+    <title>Clark Hall</title>
+    <meta name="nyu-vr" content="Clark Hall">
     <script src="../js/aframe.min.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+        loadJSON("clark", "479053675.664591");
+    </script>
   </head>
   <body>
     <a-scene>
@@ -22,7 +25,7 @@
             color="#93648D" roughness="0.5" metalness="0.5">
         </a-cylinder>
 
-        <a-sky src="../data/clark/479050310.432638.jpg" rotation="0 0 0"></a-sky>
+        <a-sky src="" rotation="0 0 0"></a-sky>
         <a-box id="arrow" scale="1 0.2 1" rotation="0 45 0" color="gray" opacity="0">
             <a-animation id="arrowanimation" attribute="position"
                          from="0 0 -15"

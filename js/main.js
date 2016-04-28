@@ -1,9 +1,13 @@
-var map; var current; 
-function loadJSON() {
+var map;
+var current;
+var folderName;
 
+function loadJSON(inputName, startImg) {
+
+    folderName = inputName;
     xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', '../data/clark/map.json', true);
+    xobj.open('GET', '../data/' + folderName + '/map.json', true);
     xobj.onreadystatechange = function() {
         if (xobj.readyState == 4 && xobj.status == "200") {
 
@@ -12,21 +16,18 @@ function loadJSON() {
             for (imgName in map) {
                 var img = document.createElement("img");
                 img.setAttribute("id",imgName);
-                img.setAttribute("src","../data/clark/"+imgName+".jpg");
+                img.setAttribute("src","../data/"+folderName+"/"+imgName+".jpg");
                 document.getElementsByTagName("a-assets")[0].appendChild(img);
             }
-            walk("init");
+            walk("init", startImg);
         }
     }
     xobj.send(null);
 }
 
-// Call to function with anonymous callback
-loadJSON();
-
 var mouseMoved = false;
 var mousedown = false;
-function walk(direction) {
+function walk(direction, startImg) {
     // handle drag without click
     document.querySelector('html').addEventListener('mousedown', function () {
         mousedown = true;
@@ -55,13 +56,13 @@ function walk(direction) {
         if (info[0]) {
             current = info[0];
         } else {
-            current = "479053675.664591";
+            current = startImg;
         }
         if (info[1]){
             document.getElementsByTagName("a-camera")[0].setAttribute("rotation","0 "+info[1]+" 0");
         }
     }
-    document.getElementsByTagName("a-sky")[0].setAttribute("src","../data/clark/"+current+".jpg");
+    document.getElementsByTagName("a-sky")[0].setAttribute("src","../data/"+folderName+"/"+current+".jpg");
     for (arrow in map[current]) {
         if (arrow != "rotate") {
             if (map[current][arrow] == "null") {
