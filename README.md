@@ -1,2 +1,2 @@
-# nyu-vr
-A virtual reality guide to NYU
+# Violet VR
+A virtual reality tour to NYU
