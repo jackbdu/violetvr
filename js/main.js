@@ -70,8 +70,18 @@ function walk(direction, startImg) {
                 document.getElementById(arrow).setAttribute("scale","10 10 0");
             }
         } else {
-            document.getElementsByTagName("a-sky")[0].setAttribute("src","../data/"+folderName+"/"+current+".jpg");
-            document.getElementsByTagName("a-sky")[0].setAttribute("rotation", "0 "+map[current][arrow]+" 0");
+            document.getElementsByTagName("a-sky")[1].setAttribute("src","../data/"+folderName+"/"+current+".jpg");
+            document.getElementsByTagName("a-sky")[1].setAttribute("rotation", "0 "+map[current][arrow]+" 0");
+            window.setTimeout(function() {
+                document.getElementsByTagName("a-sky")[1].emit('fade');
+                window.setTimeout(function() {
+                    document.getElementsByTagName("a-sky")[0].setAttribute("src","../data/"+folderName+"/"+current+".jpg");
+                    document.getElementsByTagName("a-sky")[0].setAttribute("rotation", "0 "+map[current][arrow]+" 0");
+                    window.setTimeout(function() {
+                        document.getElementsByTagName("a-sky")[1].setAttribute("opacity", "0");
+                    }, 50);
+                }, 550);
+            }, 50);
         }
     }
 }

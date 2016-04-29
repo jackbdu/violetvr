@@ -35,7 +35,7 @@
         </a-assets>
         <a-entity rotation="0 -90 0">
             <a-camera position="0 7 0" wasd-controls-enabled="false">
-                <a-cursor opacity="0"></a-cursor>    
+                <a-cursor visible="false"></a-cursor>    
             </a-camera>
         </a-entity>
 
@@ -45,13 +45,21 @@
         </a-cylinder>
 
         <a-sky src="" rotation="0 0 0"></a-sky>
+        <a-sky opacity="0" src="" rotation="0 0 0">
+            <a-animation attribute="opacity"
+                from="0"
+                to="1"
+                begin="fade"
+                dur="500"
+                easing="linear"></a-animation>
+        </a-sky>
         <a-box id="arrow" scale="1 0.2 1" rotation="0 45 0" color="gray" opacity="0">
             <a-animation id="arrowanimation" attribute="position"
-                         from="0 0 -15"
-                         to="0 0 -20"
-                         dur="1000"
-                         easing="linear"
-                         repeat="indefinite"></a-animation>
+                from="0 0 -15"
+                to="0 0 -20"
+                dur="1000"
+                easing="linear"
+                repeat="indefinite"></a-animation>
         </a-box>
         <a-box id="front" onclick="walk('front');" scale="10 10 0" opacity="0" position="0 5 -10">
             <a-event name="mouseenter" target="#arrow" opacity="0.6"></a-event>
