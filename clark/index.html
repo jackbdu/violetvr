@@ -29,8 +29,8 @@
         loadJSON("clark", "479053675.664591");
     </script>
   </head>
-  <body>
-    <div id="loading">
+  <body onload="document.getElementById('loading').style.display='none';">
+    <div id="loading" style="z-index:999;position:absolute;">
         <h1>Loading assets...</h1>
         <p>Please wait, this can take up to a few minutes depending on your network connection. </p>
         <p>We will be in virtual reality shortly.</p>
